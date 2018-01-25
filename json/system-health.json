@@ -1,0 +1,55 @@
+{
+ "swagger": "2.0",
+ "info": {
+  "title": "VxRail Public API - /system-health",
+  "version": "1.0",
+  "description": "VxRail Public REST API - /system-health"
+ },
+ "host": "VxM_IP",
+ "basePath": "/rest/vxm/v1",
+ "schemes": [
+  "https"
+ ],
+ "paths": {
+  "/system-health": {
+   "get": {
+    "tags": [
+     "SystemHealth"
+    ],
+    "description": "Get the current system health of the cluster",
+	"operationId": "getSystemHealth",
+    "consumes": [
+     "application/json"
+    ],
+    "produces": [
+     "application/json"
+    ],
+    "parameters": [
+     {
+      "name": "Authorization",
+      "description": "vCenter username and password encoded with base64",
+      "in": "header",
+      "required": true,
+      "type": "string"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "The operation status has been successfully returned.",
+      "schema": {
+       "type": "string",
+       "example": "Critical"
+      }
+     },
+   
+     "404": {
+      "description": "No system health information is found"
+     },
+     "500": {
+      "description": "The request of system health fails with internal errors."
+     }
+    }
+   }
+  }
+ }
+}
